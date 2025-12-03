@@ -2,19 +2,6 @@
 
 Sistema IoT completo para monitoramento de umidade do solo usando ESP32, MQTT, Flask e React.
 
-## 📋 Índice
-
-- [Sobre o Projeto](#sobre-o-projeto)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Pré-requisitos](#pré-requisitos)
-- [Instalação](#instalação)
-- [Como Executar](#como-executar)
-- [Testando Sem Hardware](#testando-sem-hardware)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Configuração do ESP32](#configuração-do-esp32)
-
----
-
 ## 🎯 Sobre o Projeto
 
 Este projeto implementa um sistema completo de monitoramento de umidade do solo com:
