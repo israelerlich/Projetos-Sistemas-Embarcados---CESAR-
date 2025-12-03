@@ -37,40 +37,6 @@ Este projeto implementa um sistema completo de monitoramento de umidade do solo 
 
 ---
 
-## ✅ Pré-requisitos
-
-Antes de começar, você precisa ter instalado na sua máquina:
-
-### 1. Python
-- **Versão**: 3.10 ou superior
-- **Download**: https://www.python.org/downloads/
-- **Verificar instalação**:
-  ```bash
-  python --version
-  ```
-
-### 2. Node.js e npm
-- **Versão**: Node.js 16+ e npm 8+
-- **Download**: https://nodejs.org/
-- **Verificar instalação**:
-  ```bash
-  node --version
-  npm --version
-  ```
-
-### 3. Git
-- **Download**: https://git-scm.com/
-- **Verificar instalação**:
-  ```bash
-  git --version
-  ```
-
-### 4. PlatformIO (opcional - apenas para ESP32)
-- **Instalação**: https://platformio.org/install
-- Necessário apenas se for programar o ESP32
-
----
-
 ## 📥 Instalação
 
 ### Passo 1: Clonar o Repositório
