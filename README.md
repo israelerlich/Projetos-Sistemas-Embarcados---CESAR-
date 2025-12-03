@@ -219,40 +219,6 @@ O simulador irá:
 - Observe os dados sendo atualizados em tempo real
 - O gráfico deve mostrar as variações de umidade
 
----
-
-## 📁 Estrutura do Projeto
-
-```
-Projetos-Sistemas-Embarcados---CESAR-/
-│
-├── backend/                    # Servidor Flask
-│   ├── app.py                 # Código principal do backend
-│   ├── requirements.txt       # Dependências Python
-│   ├── instance/
-│   │   └── humidity.db       # Banco de dados SQLite (criado automaticamente)
-│   └── README.md             # Documentação do backend
-│
-├── frontend/                  # Interface React
-│   ├── src/
-│   │   ├── App.jsx           # Componente principal
-│   │   ├── App.css           # Estilos
-│   │   └── main.jsx          # Ponto de entrada
-│   ├── package.json          # Dependências Node.js
-│   └── vite.config.js        # Configuração do Vite
-│
-├── firmware/                  # Código do ESP32
-│   ├── src/
-│   │   └── main.cpp          # Código principal do ESP32
-│   ├── platformio.ini        # Configuração do PlatformIO
-│   └── README.md             # Instruções para ESP32
-│
-├── test_mqtt_publisher.py    # Simulador MQTT para testes
-├── .gitignore                # Arquivos ignorados pelo Git
-└── README.md                 # Este arquivo
-```
-
----
 
 ## 🔧 Configuração do ESP32
 
@@ -263,13 +229,6 @@ Projetos-Sistemas-Embarcados---CESAR-/
 - Cabo USB para programação
 - Conexão WiFi disponível
 
-### Conexões
-
-| ESP32 Pin | Sensor |
-|-----------|--------|
-| GPIO 34   | A0 (Sinal Analógico) |
-| 3.3V      | VCC |
-| GND       | GND |
 
 ### Configuração do Firmware
 
@@ -311,134 +270,9 @@ Conectando ao WiFi...
 ✓ Publicando dados...
 ```
 
----
-
-## 🌐 Endpoints da API
-
-O backend fornece os seguintes endpoints:
-
-### GET /api/data
-Retorna as últimas 100 leituras de umidade.
-
-**Resposta:**
-```json
-[
-  {
-    "id": 1,
-    "value": 45.5,
-    "timestamp": "2025-12-03T17:00:00"
-  },
-  {
-    "id": 2,
-    "value": 46.2,
-    "timestamp": "2025-12-03T17:00:03"
-  }
-]
-```
-
-### GET /api/current
-Retorna apenas a leitura mais recente.
-
-**Resposta:**
-```json
-{
-  "id": 100,
-  "value": 47.3,
-  "timestamp": "2025-12-03T17:20:00"
-}
-```
-
----
-
-## 🔍 Troubleshooting
-
-### Backend não inicia
-
-**Erro**: `Address already in use`
-
-**Solução**: A porta 5000 está ocupada. Mude a porta no `app.py`:
-```python
-app.run(debug=True, port=5001, use_reloader=False)
-```
-
-### MQTT não conecta
-
-**Erro**: `Erro na conexão MQTT`
-
-**Solução**: Verifique sua conexão com a internet. O broker `test.mosquitto.org` é público e requer internet.
-
-### Frontend não carrega dados
-
-**Solução**:
-1. Verifique se o backend está rodando em http://127.0.0.1:5000
-2. Teste o endpoint: http://127.0.0.1:5000/api/data
-3. Verifique o console do navegador (F12) para erros
-
-### ESP32 não conecta ao WiFi
-
-**Solução**:
-1. Verifique SSID e senha no código
-2. Certifique-se que o WiFi é 2.4GHz (ESP32 não suporta 5GHz)
-3. Verifique o monitor serial para mensagens de erro
-
----
-
-## 📊 Fluxo de Dados
-
-```
-┌─────────┐      MQTT       ┌──────────┐      HTTP      ┌──────────┐
-│  ESP32  │ ─────────────> │  Backend │ ─────────────> │ Frontend │
-│ Sensor  │  (Publica)      │  Flask   │   (API REST)   │  React   │
-└─────────┘                 └──────────┘                └──────────┘
-                                  │
-                                  ▼
-                            ┌──────────┐
-                            │  SQLite  │
-                            │ Database │
-                            └──────────┘
-```
-
-1. **ESP32** lê o sensor e publica via MQTT
-2. **Backend** recebe dados MQTT e salva no banco
-3. **Frontend** consulta a API REST do backend
-4. **Usuário** visualiza os dados em tempo real
-
----
-
-## 🤝 Contribuindo
-
-Contribuições são bem-vindas! Sinta-se à vontade para:
-
-1. Fazer um fork do projeto
-2. Criar uma branch para sua feature (`git checkout -b feature/MinhaFeature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona MinhaFeature'`)
-4. Push para a branch (`git push origin feature/MinhaFeature`)
-5. Abrir um Pull Request
-
----
-
-## 📝 Licença
-
-Este projeto é educacional e está disponível para uso livre.
-
----
-
 ## 👨‍💻 Autor
 
 Projeto desenvolvido para a disciplina de Sistemas Embarcados - CESAR School
 
 ---
 
-## 📞 Suporte
-
-Se tiver dúvidas ou problemas:
-
-1. Verifique a seção [Troubleshooting](#troubleshooting)
-2. Consulte a documentação de cada componente:
-   - [Backend README](backend/README.md)
-   - [Firmware README](firmware/README.md)
-3. Abra uma issue no GitHub
-
----
-
-**Bom desenvolvimento! 🚀**
