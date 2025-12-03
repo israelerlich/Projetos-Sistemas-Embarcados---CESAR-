@@ -1,0 +1,23 @@
+.App {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    position: relative;
+}
+
+/* Responsive container */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .App {
+        padding: 1rem 0.5rem;
+    }
+}
